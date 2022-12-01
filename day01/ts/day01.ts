@@ -1,7 +1,5 @@
 const R = require("ramda");
-const { fetchDataRows, tLog, S } = require("../../lib/index.ts");
-
-const INPUT_SRC = `day01/${process.env.TEST ? "example" : "input"}.txt`;
+const { INPUT_SRC, fetchDataRows, tLog, S } = require("../../lib/index.ts");
 
 const calculateElfSupplies = R.pipe(
   R.split("\n"),
