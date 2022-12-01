@@ -1,5 +1,5 @@
 const R = require("ramda");
-const { INPUT_SRC, fetchDataRows, tLog, S } = require("../../lib/index.ts");
+const { INPUT_SRC, fetchDataRows, tLog, S } = require("../lib/index.ts");
 
 const calculateElfSupplies = R.pipe(
   R.split("\n"),
