@@ -1,5 +1,5 @@
 const { sum, sort, split, head, map, take } = require("ramda");
-const { INPUT_SRC, fetchDataRows, tLog, S, dir } = require("../lib/index.ts");
+const { INPUT_SRC, fetchDataRows, S, dir, tLog } = require("../lib/index.ts");
 const compose = require("folktale/core/lambda/compose");
 
 const calculateElfSupplies = compose(sum, split("\n"));
