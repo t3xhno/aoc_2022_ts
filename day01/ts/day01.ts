@@ -1,17 +1,28 @@
-const fs = require("fs");
-require("dotenv").config();
 const R = require("ramda");
+const { fetchDataRows, tLog, S } = require("../../lib/index.ts");
 
 const INPUT_SRC = `day01/${process.env.TEST ? "example" : "input"}.txt`;
 
-const input = fs.readFileSync(INPUT_SRC, "utf8")
-  .trim()
-  .split("\n\n")
-  .map(n => n.split(/\s/g))
-  .map(arr => arr.reduce((acc, num) => acc + +num, 0));
+const calculateElfSupplies = R.pipe(
+  R.split("\n"),
+  R.map(n => +n),
+  R.sum(),
+);
 
-const solve1 = arr => arr.sort((x, y) => y - x)[0];
-console.log(solve1(input));
+const sortTotals = R.pipe(
+  R.map(calculateElfSupplies),
+  R.sort((a, b) => b - a),
+);
 
-const solve2 = arr => arr.slice(0,3).reduce((acc, num) => acc + num, 0);
-console.log(solve2(input));
+const solve1 = R.pipe(
+  sortTotals,
+  R.head(),
+);
+
+const solve2 = R.pipe(
+  sortTotals,
+  R.slice(0, 3),
+  R.sum(),
+);
+
+R.pipe(fetchDataRows("\n\n"), S(solve1, solve2), tLog)(INPUT_SRC);
