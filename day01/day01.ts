@@ -1,26 +1,11 @@
-const R = require("ramda");
-const { INPUT_SRC, fetchDataRows, tLog, S } = require("../lib/index.ts");
+const { sum, sort, split, head, map, take } = require("ramda");
+const { INPUT_SRC, fetchDataRows, tLog, S, dir } = require("../lib/index.ts");
+const compose = require("folktale/core/lambda/compose");
 
-const calculateElfSupplies = R.pipe(
-  R.split("\n"),
-  R.map(n => +n),
-  R.sum(),
-);
+const calculateElfSupplies = compose(sum, split("\n"));
+const sortTotals = compose(sort(dir.DESC), map(calculateElfSupplies));
 
-const sortTotals = R.pipe(
-  R.map(calculateElfSupplies),
-  R.sort((a, b) => b - a),
-);
+const solve1 = compose(head, sortTotals);
+const solve2 = compose.all(sum, take(3), sortTotals);
 
-const solve1 = R.pipe(
-  sortTotals,
-  R.head(),
-);
-
-const solve2 = R.pipe(
-  sortTotals,
-  R.slice(0, 3),
-  R.sum(),
-);
-
-R.pipe(fetchDataRows("\n\n"), S(solve1, solve2), tLog)(INPUT_SRC);
+compose.all(tLog, S(solve1, solve2), fetchDataRows("\n\n"))(INPUT_SRC);

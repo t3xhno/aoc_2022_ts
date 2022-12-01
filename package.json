@@ -2,6 +2,7 @@
   "dependencies": {
     "@types/node": "^18.11.9",
     "dotenv": "^16.0.3",
+    "folktale": "^2.3.2",
     "ramda": "^0.28.0"
   }
 }
