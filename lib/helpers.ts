@@ -9,8 +9,30 @@ const dir = {
   DESC: (a, b) => b - a,
 };
 
+// Rock/Paper/Scissors maps
+const pointsMap = {
+  "A": 1,
+  "B": 2,
+  "C": 3,
+};
+
+const decryptMap = {
+  "X": "A",
+  "Y": "B",
+  "Z": "C",
+};
+
+const resMap = {
+  "A": { w: "C", l: "B" },
+  "B": { w: "A", l: "C" },
+  "C": { w: "B", l: "A" },
+};
+
 module.exports = {
   dir,
   tLog,
+  resMap,
   Comb: S,
+  pointsMap,
+  decryptMap,
 };
