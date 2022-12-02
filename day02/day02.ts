@@ -14,5 +14,3 @@ const sumResults = compose.all(sum, map(view(lensProp("result"))), map(evalRound
 const solve = t => compose.all(sumResults, makeInput(t));
 
 compose.all(tLog, Comb(solve(1), solve(2)), fetchDataRows())(INPUT_SRC);
-
-console.log("no");
