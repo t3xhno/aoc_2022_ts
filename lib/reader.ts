@@ -7,4 +7,4 @@ const INPUT_SRC = `${process.env.DAY}/${process.env.TEST ? "example" : "input"}.
 const getInput = () => fs.readFileSync(INPUT_SRC).toString().trim();
 const fetchDataRows = (splitBy = "\n") => compose(split(splitBy), getInput);
 
-module.exports = { fetchDataRows };
+module.exports = { fetchDataRows, getInput };
